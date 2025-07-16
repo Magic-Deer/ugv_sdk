@@ -55,8 +55,8 @@ BunkerActuatorState BunkerRobot::GetActuatorState() {
 }
 
 BunkerCommonSensorState BunkerRobot::GetCommonSensorState() {
-  auto scout = dynamic_cast<BunkerInterface*>(robot_);
-  return scout->GetCommonSensorState();
+  auto bunker = dynamic_cast<BunkerInterface*>(robot_);
+  return bunker->GetCommonSensorState();
 }
 
 }  // namespace westonrobot
