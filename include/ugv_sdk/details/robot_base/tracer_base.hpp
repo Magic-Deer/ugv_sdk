@@ -21,8 +21,7 @@
 #include "ugv_sdk/details/protocol_v2/protocol_v2_parser.hpp"
 
 namespace westonrobot {
-template <typename ParserType>
-class TracerBase : public AgilexBase<ParserType>,
+class TracerBase : public AgilexBase<ProtocolV2Parser>,
                      public TracerInterface {
  public:
   TracerBase() : AgilexBase<ProtocolV2Parser>(){};
@@ -75,7 +74,7 @@ class TracerBase : public AgilexBase<ParserType>,
 
   TracerCommonSensorState GetCommonSensorState() override {
     auto common_sensor =
-        AgilexBase<ParserType>::GetCommonSensorStateMsgGroup();
+        AgilexBase<ProtocolV2Parser>::GetCommonSensorStateMsgGroup();
 
     TracerCommonSensorState tracer_bms;
 
@@ -95,9 +94,5 @@ class TracerBase : public AgilexBase<ParserType>,
 #include "ugv_sdk/details/protocol_v1/protocol_v1_parser.hpp"
 #include "ugv_sdk/details/protocol_v2/protocol_v2_parser.hpp"
 
-namespace westonrobot {
-using TracerBaseV1 = TracerBase<TracerProtocolV1Parser>;
-using TracerBaseV2 = TracerBase<ProtocolV2Parser>;
-}  // namespace westonrobot
 
 #endif /* TRACER_BASE_HPP */

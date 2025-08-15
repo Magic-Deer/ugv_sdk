@@ -12,11 +12,7 @@
 
 namespace westonrobot {
 TracerRobot::TracerRobot(ProtocolVersion protocol) {
-  if (protocol == ProtocolVersion::AGX_V1) {
-    robot_ = new TracerBaseV1();
-  } else if (protocol == ProtocolVersion::AGX_V2) {
-    robot_ = new TracerBaseV2();
-  }
+  robot_ = new TracerBase();
 }
 
 TracerRobot::~TracerRobot() {
@@ -46,6 +42,11 @@ void TracerRobot::SetMotionCommand(double linear_vel, double angular_vel) {
 void TracerRobot::SetLightCommand(AgxLightMode f_mode, uint8_t f_value) {
   auto scout = dynamic_cast<TracerInterface*>(robot_);
   scout->SetLightCommand(f_mode, f_value);
+}
+
+void TracerRobot::DisableLightControl() {
+  auto tracer = dynamic_cast<TracerInterface*>(robot_);
+  tracer->DisableLightControl();
 }
 
 TracerCoreState TracerRobot::GetRobotState() {

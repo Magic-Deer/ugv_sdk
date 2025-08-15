@@ -101,6 +101,7 @@ add_library(${PROJECT_NAME}
     src/mobile_robot/bunker_robot.cpp
     src/mobile_robot/ranger_robot.cpp
     src/mobile_robot/titan_robot.cpp
+    src/mobile_robot/tracer_robot.cpp
     ########################
     ## protocol v2 support
     src/protocol_v2/agilex_msg_parser_v2.c
